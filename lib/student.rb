@@ -48,7 +48,17 @@ class Student
   def self.create(name, grade)
     a = Student.new(name,grade)
     a.save
+  end
 
+  def self.new_from_db(row)
+    sql = <<-SQL
+    SELECT *
+    FROM students
+    SQL
+    DB[:conn].excute(sql).map do |row| 
+      Students.new(row[0],row[1],row[2])    
+    end 
+    
   end
 
 

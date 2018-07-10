@@ -55,10 +55,10 @@ class Student
     SELECT *
     FROM students
     SQL
-    DB[:conn].excute(sql).map do |row| 
+    DB[:conn].excute(sql).map do |row|
       Students.new(row[0],row[1],row[2])    
-    end 
-    
+    end
+
   end
 
 
